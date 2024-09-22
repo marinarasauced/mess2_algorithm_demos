@@ -1,5 +1,5 @@
-#ifndef MESS2_ALGORITHM_DEMOS_DEMO1_HPP
-#define MESS2_ALGORITHM_DEMOS_DEMO1_HPP
+#ifndef MESS2_ALGORITHM_DEMOS_DEMO2_HPP
+#define MESS2_ALGORITHM_DEMOS_DEMO2_HPP
 
 #include "mess2_algorithm_threat_static/threat.hpp"
 #include "mess2_algorithm_plugins/low_level/low_level.hpp"
@@ -19,4 +19,4 @@ private:
     mess2_algorithms::LowLevelSearch low_level_;
 };
 
-#endif // MESS2_ALGORITHM_DEMOS_DEMO1_HPP
+#endif // MESS2_ALGORITHM_DEMOS_DEMO2_HPP

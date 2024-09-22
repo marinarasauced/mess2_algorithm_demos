@@ -1,7 +1,7 @@
 
 #include "mess2_algorithm_demos/demo_low_level_static.hpp"
 
-DemoLowLevelStatic::DemoLowLevelStatic() : Node("demo1")
+DemoLowLevelStatic::DemoLowLevelStatic() : Node("demo2")
 {
     int64_t resolution;
     this->declare_parameter("resolution", 301);
@@ -31,8 +31,6 @@ DemoLowLevelStatic::DemoLowLevelStatic() : Node("demo1")
 
     RCLCPP_INFO(this->get_logger(), "filling low level search");
     low_level_.fill_low_level_search(graph, burger1, 0, std::pow(resolution, 2) - 1);
-
-    (void) run_node();
 };
 
 void DemoLowLevelStatic::run_node()
@@ -45,6 +43,7 @@ int main(int argc, char **argv)
 {
     rclcpp::init(argc, argv);
     auto node = std::make_shared<DemoLowLevelStatic>();
+    (void) node->run_node();
     rclcpp::shutdown();
     return 0;
 }
