@@ -19,12 +19,6 @@ include_directories(
 
 add_executable(demo_low_level_static src/demo_low_level_static.cpp)
 
-# target_link_libraries(
-#   demo_low_level_static
-#   mess2_algorithm_threat_static::threat
-# )
-
-
 ament_target_dependencies(
   demo_low_level_static
   "rclcpp"
