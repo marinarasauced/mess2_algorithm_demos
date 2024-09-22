@@ -30,13 +30,7 @@ DemoLowLevelStatic::DemoLowLevelStatic() : Node("demo1")
     burger1.fill_times_by_edges(graph.get_edges(), graph.get_vertices());
 
     RCLCPP_INFO(this->get_logger(), "filling low level search");
-    low_level_.fill_low_level_search(graph, threat_static, burger1, 0, 300);
-
-    // auto graph = mess2_algorithms::generate_graph(x_graph, y_graph);
-    // auto actor = mess2_algorithms::generate_and_define_turtlebot3("burger", 0.7, 1.1);
-    // auto threat = mess2_algorithms::generate_threat_static(x_threat, y_threat);
-
-    // (void) low_level_.fill_low_level_search(graph, actor, threat, 0, 1);
+    low_level_.fill_low_level_search(graph, burger1, 0, std::pow(resolution, 2) - 1);
 
     (void) run_node();
 };
