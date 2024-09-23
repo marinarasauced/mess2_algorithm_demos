@@ -20,14 +20,14 @@ DemoLowLevelStatic::DemoLowLevelStatic() : Node("demo2")
     RCLCPP_INFO(this->get_logger(), "generating actor");
     auto burger1 = mess2_algorithms::generate_actor_turtlebot3("burger", 0.7, 1.1);
 
-    RCLCPP_INFO(this->get_logger(), "filling actor occupancies by vertices");
-    burger1.fill_occupancies_by_vertex(x_graph, y_graph, graph.get_vertices());
+    RCLCPP_INFO(this->get_logger(), "filling actor occupancies by x and y");
+    burger1.fill_occupancies_by_x_and_y(x_graph, y_graph, graph);
 
     RCLCPP_INFO(this->get_logger(), "filling actor scores by edges");
-    burger1.fill_scores_by_edges(graph.get_edges(), threat_static);
+    burger1.fill_scores_by_edges(graph, threat_static);
 
     RCLCPP_INFO(this->get_logger(), "filling actor times by edges");
-    burger1.fill_times_by_edges(graph.get_edges(), graph.get_vertices());
+    burger1.fill_times_by_edges(graph);
 
     RCLCPP_INFO(this->get_logger(), "filling low level search");
     low_level_.fill_low_level_search(graph, burger1, 0, std::pow(resolution, 2) - 1);
@@ -36,7 +36,8 @@ DemoLowLevelStatic::DemoLowLevelStatic() : Node("demo2")
 void DemoLowLevelStatic::run_node()
 {
     RCLCPP_INFO(this->get_logger(), "executing low level search");
-    (void) low_level_.execute_low_level_search();
+    const auto path = low_level_.execute_low_level_search();
+    (void) mess2_algorithms::print_path(path, low_level_.get_graph().get_vertices());
 }
 
 int main(int argc, char **argv)
