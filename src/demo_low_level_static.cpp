@@ -29,6 +29,13 @@ DemoLowLevelStatic::DemoLowLevelStatic() : Node("demo2")
     RCLCPP_INFO(this->get_logger(), "filling actor times by edges");
     burger1.fill_times_by_edges(graph);
 
+    RCLCPP_INFO(this->get_logger(), "filling empty constraints");
+    constraints_.fill_constraints(graph);
+
+    constraints_.add_constraint_to_vertex(20000, 0.0, 10.0);
+    constraints_.add_constraint_to_vertex(1, 0.0, 10.0);
+    constraints_.add_constraint_to_vertex(10000, 0.0, 10.0);
+
     RCLCPP_INFO(this->get_logger(), "filling low level search");
     low_level_.fill_low_level_search(graph, burger1, 0, std::pow(resolution, 2) - 1);
 };
@@ -36,7 +43,7 @@ DemoLowLevelStatic::DemoLowLevelStatic() : Node("demo2")
 void DemoLowLevelStatic::run_node()
 {
     RCLCPP_INFO(this->get_logger(), "executing low level search");
-    const auto path = low_level_.execute_low_level_search();
+    const auto path = low_level_.execute_low_level_search(constraints_);
     (void) mess2_algorithms::print_path(path, low_level_.get_graph().get_vertices());
 }
 
