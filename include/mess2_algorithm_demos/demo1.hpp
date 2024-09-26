@@ -5,6 +5,9 @@
 // #include "mess2_algorithm_plugins/graph/graph.hpp"
 // #include "mess2_algorithm_plugins/utils.hpp"
 
+#include "mess2_algorithm_threat_static/threat.hpp"
+#include "mess2_algorithm_plugins/graph.hpp"
+
 #include "rclcpp/rclcpp.hpp"
 
 class DemoGraph : public rclcpp::Node
