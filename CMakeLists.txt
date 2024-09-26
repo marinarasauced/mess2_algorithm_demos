@@ -19,6 +19,7 @@ include_directories(
 
 add_executable(demo_graph src/demo_graph.cpp)
 add_executable(demo_low_level_static src/demo_low_level_static.cpp)
+add_executable(demo_high_level_static src/demo_high_level_static.cpp)
 
 ament_target_dependencies(
   demo_graph
@@ -34,8 +35,15 @@ ament_target_dependencies(
   "mess2_algorithm_plugins"
 )
 
+ament_target_dependencies(
+  demo_high_level_static
+  "rclcpp"
+  "mess2_algorithm_threat_static"
+  "mess2_algorithm_plugins"
+)
+
 install(
-  TARGETS demo_graph demo_low_level_static
+  TARGETS demo_graph demo_low_level_static demo_high_level_static
   DESTINATION lib/${PROJECT_NAME}
 )
 
