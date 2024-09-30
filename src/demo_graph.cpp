@@ -28,7 +28,7 @@ DemoGraph::DemoGraph() : Node("demo1")
     auto graph = mess2_algorithms::Graph(x_graph, y_graph, resolution, use_diagonals);
 
     RCLCPP_INFO(this->get_logger(), "writing graph to csv");
-    (void) mess2_algorithms::save_vertices(graph, path_vertices);
+    (void) graph.save_vertices(path_vertices);
 
     RCLCPP_INFO(this->get_logger(), "generating threat");
     const auto [x_threat, y_threat] = mess2_algorithms::generate_mesh(-15.0, 15.0, -15.0, 15.0, resolution);

@@ -17,33 +17,66 @@ include_directories(
   ${mess2_algorithm_plugins_INCLUDE_DIRS}
 )
 
-add_executable(demo_graph src/demo_graph.cpp)
-add_executable(demo_low_level_static src/demo_low_level_static.cpp)
-add_executable(demo_high_level_static src/demo_high_level_static.cpp)
+# add_executable(demo_graph src/demo_graph.cpp)
+# add_executable(demo_low_level_static src/demo_low_level_static.cpp)
+# add_executable(demo_high_level_static src/demo_high_level_static.cpp)
+
+add_executable(generate_graph src/generate_graph.cpp)
+add_executable(generate_threat src/generate_threat.cpp)
+add_executable(simulate_actors_2x src/simulate_actors_2x.cpp)
+add_executable(simulate_actors_10x src/simulate_actors_10x.cpp)
+
+# ament_target_dependencies(
+#   demo_graph
+#   "rclcpp"
+#   "mess2_algorithm_threat_static"
+#   "mess2_algorithm_plugins"
+# )
+
+# ament_target_dependencies(
+#   demo_low_level_static
+#   "rclcpp"
+#   "mess2_algorithm_threat_static"
+#   "mess2_algorithm_plugins"
+# )
+
+# ament_target_dependencies(
+#   demo_high_level_static
+#   "rclcpp"
+#   "mess2_algorithm_threat_static"
+#   "mess2_algorithm_plugins"
+# )
 
 ament_target_dependencies(
-  demo_graph
+  generate_graph
   "rclcpp"
   "mess2_algorithm_threat_static"
   "mess2_algorithm_plugins"
 )
 
 ament_target_dependencies(
-  demo_low_level_static
+  generate_threat
   "rclcpp"
   "mess2_algorithm_threat_static"
   "mess2_algorithm_plugins"
 )
 
 ament_target_dependencies(
-  demo_high_level_static
+  simulate_actors_2x
+  "rclcpp"
+  "mess2_algorithm_threat_static"
+  "mess2_algorithm_plugins"
+)
+
+ament_target_dependencies(
+  simulate_actors_10x
   "rclcpp"
   "mess2_algorithm_threat_static"
   "mess2_algorithm_plugins"
 )
 
 install(
-  TARGETS demo_graph demo_low_level_static demo_high_level_static
+  TARGETS generate_graph generate_threat simulate_actors_2x simulate_actors_10x
   DESTINATION lib/${PROJECT_NAME}
 )
 
